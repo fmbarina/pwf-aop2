@@ -1,0 +1,269 @@
+:root {
+    --target-content-width: 44rem;
+    --text-size-huge: 4.2rem;
+    --text-size-large: large;
+    --text-size-medium: 1.2rem;
+    --text-size-small: 0.9rem;
+    --text-size-tiny: small;
+    --text-color-main: rgba(17, 17, 17, 1);
+    --text-color-sub: rgba(17, 17, 17, 0.5);
+    --text-color-xsub: rgba(17, 17, 17, 0.4);
+    --text-color-main-inverse: var(--background-color);
+    --background-color: rgba(255, 255, 255, 1);
+    --background-color-inverse: var(--text-color-main);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* --text-color-main: rgba(251, 251, 254, 1); */
+        /* --text-color-sub: rgba(251, 251, 254, 0.5); */
+        /* --text-color-xsub: rgba(251, 251, 254, 0.4); */
+        /* --background-color: rgba(28, 28, 34, 1); */
+    }
+}
+
+html {
+    background-color: var(--background-color);
+    color: var(--text-color-main);
+    font-family: "Merriweather", serif;
+}
+
+body {
+    margin: 0;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+@media screen and (max-width: 760px) {
+    body {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    :root {
+        --text-size-huge: 2.8rem;
+    }
+}
+
+*::selection {
+    color: var(--text-color-main-inverse);
+    background-color: var(--background-color-inverse);
+}
+
+h1,
+h2,
+ul,
+ol,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a:link,
+a:visited {
+    color: var(--text-color-main);
+    text-decoration: none;
+}
+
+hr {
+    max-width: var(--target-content-width);
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    height: 1px;
+    background: var(--text-color-main);
+}
+
+header {
+    font-family: 'DM Serif Display', serif;
+    font-size: var(--text-size-large);
+    font-weight: bold;
+    margin-top: 2rem;
+
+    h1 {
+        font-size: var(--text-size-huge);
+        text-align: center;
+        max-width: var(--target-content-width);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @media screen and (max-width: 760px) {
+        h1 {
+            text-align: left;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        h1 {
+            text-align: center;
+        }
+    }
+
+    nav {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    ul {
+        /* This centers the navigation *list* */
+        max-width: var(--target-content-width);
+        margin-left: auto;
+        margin-right: auto;
+        /* This centers the navigation *items* */
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        gap: 1rem;
+    }
+
+    a:link,
+    a:visited {
+        color: var(--text-color-main);
+    }
+
+    a:hover {
+        text-decoration: solid underline 2px;
+        text-underline-offset: 3px;
+    }
+}
+
+main {
+    article {
+        font-size: var(--text-size-medium);
+        line-height: 1.5;
+        max-width: var(--target-content-width);
+        margin-left: auto;
+        margin-right: auto;
+        text-align: justify;
+        hyphens: auto;
+
+        p:first-child {
+            margin-top: 0;
+        }
+
+        p:first-child::first-letter {
+            /* I'd like to use initial-letter, but no firefox support yet :c */
+            float: left;
+            font-size: 3em;
+            line-height: 0.60;
+            margin: 0.1em 0.1em 0 0;
+        }
+    }
+
+    p {
+
+        a:link,
+        a:visited {
+            transition: all .2s;
+            text-decoration: solid underline 1px;
+            text-underline-offset: 2px;
+        }
+
+        a:hover {
+            color: var(--text-color-main-inverse);
+            background-color: var(--background-color-inverse);
+            text-decoration: none;
+        }
+    }
+}
+
+.lead {
+    font-weight: bold;
+    font-variant-caps: small-caps;
+}
+
+a.card {
+    display: block;
+    color: var(--text-color-main-inverse);
+    background-color: var(--background-color-inverse);
+    padding: 1rem;
+    /* Essa margem é fruto de uma falha de planejamento... */
+    margin-bottom: 1rem;
+
+    img {
+        width: 100%;
+        object-fit: cover;
+        max-height: 12rem;
+    }
+
+    h2 {
+        font-family: 'DM Serif Display', serif;
+    }
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    font-size: var(--text-size-small);
+    text-align: center;
+    border-collapse: collapse;
+
+    caption {
+        font-size: var(--text-size-tiny);
+        margin: 0.2rem;
+    }
+}
+
+th {
+    font-family: 'DM Serif Display', serif;
+    font-size: var(--text-size-medium);
+}
+
+th,
+td {
+    border: 1px solid var(--text-color-main);
+    padding: 0.3rem;
+}
+
+@media screen and (max-width: 600px) {
+    table {
+        min-width: var(--target-content-width);
+    }
+}
+
+footer {
+    font-size: var(--text-size-tiny);
+    color: var(--text-color-sub);
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    span {
+        text-align: center;
+    }
+
+    a:link,
+    a:visited {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+.dingbat::before {
+    content: '  ♪  ';
+    color: var(--text-color-xsub);
+    white-space: pre;
+}
+
+@media screen and (max-width: 760px) {
+    footer {
+        flex-direction: column;
+    }
+
+    .dingbat {
+        display: none;
+    }
+}
